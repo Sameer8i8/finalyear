@@ -5,7 +5,7 @@ FROM php:8.0-apache
 WORKDIR /var/www/html
 
 # Copy your website files into the container's working directory
-COPY /finalyear/website/* /var/www/html
+COPY . /var/www/html
 
 # Expose port 80 to access the website
 EXPOSE 80
