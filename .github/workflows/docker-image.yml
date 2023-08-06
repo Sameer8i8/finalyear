@@ -25,4 +25,4 @@ jobs:
         with:
           context: .  # Adjust the path if your Dockerfile is in a subdirectory
           push: true
-          tags: sameer8i8/final-year:v1 # Change this to your Docker Hub repo and image name
+          tags: sameer8i8/final-year:v2 # Change this to your Docker Hub repo and image name

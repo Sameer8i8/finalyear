@@ -2,10 +2,12 @@
 FROM php:8.0-apache
 
 # Set the working directory in the container
-WORKDIR /var/www/html
+WORKDIR /var/www/html/
 
 # Copy your website files into the container's working directory
-COPY . /var/www/html
+COPY ./website/ /var/www/html
 
 # Expose port 80 to access the website
 EXPOSE 80
+
+CMD [ "apachectl", "-D", "FOREGROUND" ]
