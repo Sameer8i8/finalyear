@@ -3,9 +3,9 @@
   hosts: localhost
   become: true
   tasks:
-    - name: Gather hostname information
+    - name: Gather hostname information using hostname command
       ansible.builtin.command:
-        cmd: hostnamectl
+        cmd: hostname
       register: hostname_info
 
     - name: Display the current hostname
