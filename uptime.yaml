@@ -1,0 +1,7 @@
+---
+- hosts: local
+  tasks:
+    - name: get uptime
+      shell: /usr/bin/uptime | grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" "$3 }'
+      changed_when: False
+      register: uptime
