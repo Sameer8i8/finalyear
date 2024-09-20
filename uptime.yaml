@@ -1,5 +1,17 @@
 ---
 - hosts: localhost
   tasks:
+    - name: get hostname
+      command: /bin/hostname
+      changed_when: False
+      register: hostname
+
     - name: get uptime
-      shell: uptime
+      shell: /usr/bin/uptime | grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" "$3 }'
+      changed_when: False
+      register: uptime
+
+    - debug: var={{ item }}
+      with_items:
+        - hostname.stdout
+        - uptime.stdout
