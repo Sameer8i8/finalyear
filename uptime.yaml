@@ -1,17 +1,13 @@
 ---
-- hosts: localhost
+- name: Check hostname on RHEL systems
+  hosts: localhost
+  become: true
   tasks:
-    - name: get hostname
-      command: /bin/hostname
-      changed_when: False
-      register: hostname
+    - name: Gather hostname information
+      ansible.builtin.command:
+        cmd: hostnamectl
+      register: hostname_info
 
-    - name: get uptime
-      shell: /usr/bin/uptime | grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" "$3 }'
-      changed_when: False
-      register: uptime
-
-    - debug: var={{ item }}
-      with_items:
-        - hostname.stdout
-        - uptime.stdout
+    - name: Display the current hostname
+      ansible.builtin.debug:
+        msg: "The current hostname is: {{ hostname_info.stdout }}"
