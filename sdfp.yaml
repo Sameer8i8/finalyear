@@ -2,6 +2,7 @@
 - name: Check hostname on RHEL systems
   hosts: all
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+    - name: Hello
+      shell: /usr/bin/uptime | grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" "$3 }'
+      changed_when: False
+      register: uptime
