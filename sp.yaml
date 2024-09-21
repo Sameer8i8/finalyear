@@ -1,7 +1,6 @@
 ---
 - name: Check hostname on RHEL systems
-  hosts: localhost
-  become: false
+  hosts: all
   tasks:
     - name: Gather hostname information using hostname command
       ansible.builtin.command:
