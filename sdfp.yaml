@@ -2,11 +2,6 @@
 - name: Check hostname on RHEL systems
   hosts: all
   tasks:
-    - name: Gather hostname information using hostname command
-      ansible.builtin.command:
-        cmd: hostname
-      register: hostname_info
-
-    - name: Display the current hostname
-      ansible.builtin.debug:
-        msg: "The current hostname is: {{ hostname_info.stdout }}"
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
